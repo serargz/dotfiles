@@ -2,11 +2,11 @@ set nocompatible              " be iMproved, required
 filetype off                  " required
 
 " set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
 
 " let Vundle manage Vundle, required
-Plugin 'gmarik/vundle'
+Plugin 'gmarik/Vundle.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'kien/ctrlp.vim' 
 Plugin 'jistr/vim-nerdtree-tabs'
@@ -14,6 +14,7 @@ Plugin 'Lokaltog/vim-easymotion'
 Plugin 'msanders/snipmate.vim'
 let g:nerdtree_tabs_open_on_console_startup=1
 
+call vundle#end()
 filetype plugin indent on     " required
 
 set t_Co=256
