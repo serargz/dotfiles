@@ -2,11 +2,11 @@ set nocompatible              " be iMproved, required
 filetype off                  " required
 
 " set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
 
 " let Vundle manage Vundle, required
-Plugin 'gmarik/vundle'
+Plugin 'gmarik/Vundle.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'jistr/vim-nerdtree-tabs'
 Plugin 'kien/ctrlp.vim'
@@ -20,7 +20,8 @@ Plugin 'tpope/vim-fugitive'     " git functions
 " Automatically open nerdtree
 let g:nerdtree_tabs_open_on_console_startup=1
 
-filetype plugin indent on " required
+call vundle#end()
+filetype plugin indent on     " required
 
 set t_Co=256
 set tabstop=2
@@ -41,7 +42,7 @@ nnoremap <C-l> <C-w>l
 imap jj <Esc>
 
 " Remove leading spaces before writing buffer
-autocmd BufWritePre * :%s/\s\+$//g
+autocmd BufWritePre * :%s/\s\+$//e
 
 " Go specific plugins
 filetype off
