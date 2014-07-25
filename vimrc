@@ -8,13 +8,19 @@ call vundle#rc()
 " let Vundle manage Vundle, required
 Plugin 'gmarik/vundle'
 Plugin 'scrooloose/nerdtree'
-Plugin 'kien/ctrlp.vim' 
 Plugin 'jistr/vim-nerdtree-tabs'
+Plugin 'kien/ctrlp.vim'
 Plugin 'Lokaltog/vim-easymotion'
 Plugin 'msanders/snipmate.vim'
+Plugin 'tpope/vim-surround'
+Plugin 'airblade/vim-gitgutter' " shows git diff in file
+Plugin 'bling/vim-airline'      " neat footer
+Plugin 'tpope/vim-fugitive'     " git functions
+
+" Automatically open nerdtree
 let g:nerdtree_tabs_open_on_console_startup=1
 
-filetype plugin indent on     " required
+filetype plugin indent on " required
 
 set t_Co=256
 set tabstop=2
@@ -31,6 +37,11 @@ nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
+
+imap jj <Esc>
+
+" Remove leading spaces before writing buffer
+autocmd BufWritePre * :%s/\s\+$//g
 
 " Go specific plugins
 filetype off
