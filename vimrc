@@ -16,9 +16,15 @@ Plugin 'tpope/vim-surround'
 Plugin 'airblade/vim-gitgutter' " shows git diff in file
 Plugin 'bling/vim-airline'      " neat footer
 Plugin 'tpope/vim-fugitive'     " git functions
+Plugin 'nathanaelkane/vim-indent-guides'
+Plugin 'mileszs/ack.vim'
+Plugin 'kchmck/vim-coffee-script'
 
 " Automatically open nerdtree
 let g:nerdtree_tabs_open_on_console_startup=1
+
+" Use ack-grep instead of ack
+let g:ackprg = "ack -H --nocolor --nogroup --column"
 
 call vundle#end()
 filetype plugin indent on     " required
@@ -39,6 +45,7 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
+" Exit from INSERT mode with jj
 imap jj <Esc>
 
 " Remove leading spaces before writing buffer
@@ -51,4 +58,8 @@ set runtimepath+=$GOROOT/misc/vim
 filetype plugin indent on
 syntax on
 
+" FileType specific configurations
+autocmd FileType make set noexpandtab shiftwidth=8 softtabstop=0
+
 colorscheme TomorrowNight
+filetype on
