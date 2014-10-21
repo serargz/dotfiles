@@ -11,7 +11,8 @@
   show-file = "!f() { git show ${2-origin/master}:$1; }; f"
   file-history = "!f() { git log -p ${2-origin/master} -- $1; }; f"
   fo = fetch
-  authy-push = "!f() { AUTHY_TOKEN=$(read -p \"Token: \") git push $* }; f"
+  regex = "!f() { git status --porcelain | grep '$2'| cut -c 4- | git $1 $2; }; f"
+  diffc = diff --cached
 
 [color]
   ui = auto
@@ -41,3 +42,5 @@
 
 [help]
   autocorrect = 1
+[grep]
+	lineNumber = true
