@@ -19,9 +19,12 @@ Plugin 'tpope/vim-fugitive'     " git functions
 Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'mileszs/ack.vim'
 Plugin 'kchmck/vim-coffee-script'
+Plugin 'thoughtbot/vim-rspec'
 
 " Automatically open nerdtree
-let g:nerdtree_tabs_open_on_console_startup=1
+" let g:nerdtree_tabs_open_on_console_startup=1
+"
+let mapleader = ","
 
 " Use ack-grep instead of ack
 let g:ackprg = "ack -H --nocolor --nogroup --column"
@@ -48,6 +51,16 @@ nnoremap <C-l> <C-w>l
 " Exit from INSERT mode with jj
 imap jj <Esc>
 
+" Custom mappings
+map - :NERDTreeToggle<CR>
+
+
+" RSpec.vim mappings
+map <Leader>t :call RunCurrentSpecFile()<CR>
+map <Leader>s :call RunNearestSpec()<CR>
+map <Leader>l :call RunLastSpec()<CR>
+map <Leader>a :call RunAllSpecs()<CR>
+
 " Remove leading spaces before writing buffer
 autocmd BufWritePre * :%s/\s\+$//e
 
@@ -63,3 +76,14 @@ autocmd FileType make set noexpandtab shiftwidth=8 softtabstop=0
 
 colorscheme TomorrowNight
 filetype on
+
+" Font size for gui vim
+if has("gui_running")
+  if has("gui_gtk2")
+    set guifont=Inconsolata\ 9
+  elseif has("gui_macvim")
+    set guifont=Menlo\ Regular:h12
+  elseif has("gui_win32")
+    set guifont=Consolas:h11:cANSI
+  endif
+endif
