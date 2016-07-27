@@ -11,7 +11,7 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'jistr/vim-nerdtree-tabs'
 Plugin 'kien/ctrlp.vim'
 Plugin 'Lokaltog/vim-easymotion'
-Plugin 'msanders/snipmate.vim'
+Plugin 'honza/vim-snippets'
 Plugin 'tpope/vim-surround'
 Plugin 'airblade/vim-gitgutter' " shows git diff in file
 Plugin 'bling/vim-airline'      " neat footer
@@ -20,6 +20,7 @@ Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'mileszs/ack.vim'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'thoughtbot/vim-rspec'
+Plugin 'fatih/vim-go'
 
 " Automatically open nerdtree
 " let g:nerdtree_tabs_open_on_console_startup=1
@@ -54,7 +55,6 @@ imap jj <Esc>
 " Custom mappings
 map - :NERDTreeToggle<CR>
 
-
 " RSpec.vim mappings
 map <Leader>t :call RunCurrentSpecFile()<CR>
 map <Leader>s :call RunNearestSpec()<CR>
@@ -64,18 +64,18 @@ map <Leader>a :call RunAllSpecs()<CR>
 " Remove leading spaces before writing buffer
 autocmd BufWritePre * :%s/\s\+$//e
 
-" Go specific plugins
-filetype off
-filetype plugin indent off
-set runtimepath+=$GOROOT/misc/vim
 filetype plugin indent on
 syntax on
 
 " FileType specific configurations
 autocmd FileType make set noexpandtab shiftwidth=8 softtabstop=0
+autocmd FileType php set noexpandtab shiftwidth=4 softtabstop=0
 
 colorscheme TomorrowNight
 filetype on
+
+autocmd BufWritePost,FileWritePost *.go execute 'GoLint' | cwindow
+let g:go_fmt_command = "goimports"
 
 " Font size for gui vim
 if has("gui_running")
